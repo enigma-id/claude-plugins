@@ -18,7 +18,7 @@ claude plugin install skills@evn.co.id
 claude plugin marketplace add /Users/alifamri/Works/Enigma/claude-plugins
 
 # Install from local
-claude plugin install skills@evn-id-skills
+claude plugin install skills@evn.co.id
 ```
 
 ## Skills

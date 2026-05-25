@@ -1,6 +1,6 @@
 # EVN ID — Claude Code Skills
 
-Skill marketplace for the EVN engineering team. Extends Claude Code with specialized capabilities for database design, Go backend development, engine framework usage, React frontend, ClickUp management, and Kubernetes operations.
+Skill marketplace for the EVN engineering team. Extends Claude Code with specialized capabilities for database design, Go backend development, engine framework usage, React frontend, ClickUp management, Kubernetes operations, and statusline configuration.
 
 ## Install
 
@@ -8,8 +8,14 @@ Skill marketplace for the EVN engineering team. Extends Claude Code with special
 # Add marketplace from GitHub
 claude plugin marketplace add https://github.com/enigma-id/claude-plugins
 
-# Install EVN skills (includes all 6 skills)
+# Install EVN skills (includes all 7 skills)
 claude plugin install skills@evn.co.id
+```
+
+**Setup statusline (one-time):**
+```bash
+# Configure EVN statusline with ClickUp task tracking
+/evn-statusline
 ```
 
 **Local development:**
@@ -33,6 +39,7 @@ All skills are available under the `skills` plugin:
 | `evn-react` | `/evn-react` | React/TypeScript frontend standards | Component patterns, state management, hooks, forms |
 | `evn-clickup` | `/evn-clickup` | ClickUp workspace operations | Task management, documents, team collaboration |
 | `evn-kubernetes` | `/evn-kubernetes` | K8s cluster operations | Namespace inventory, deployments, debugging |
+| `evn-statusline` | `/evn-statusline` | Statusline configuration | ClickUp task tracking, git status, project context |
 
 ## Scaffold Tools (evn-golang)
 

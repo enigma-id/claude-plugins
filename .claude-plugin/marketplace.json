@@ -5,7 +5,7 @@
     "name": "Alif Amri"
   },
   "metadata": {
-    "description": "EVN ID engineering team skills – database standards, Go backend, engine framework, React frontend, ClickUp management, and Kubernetes operations"
+    "description": "EVN ID engineering team skills – database standards, Go backend, engine framework, React frontend, ClickUp management, Kubernetes operations, and statusline setup"
   },
   "plugins": [
     {
@@ -17,7 +17,8 @@
         "./skills/evn-engine",
         "./skills/evn-react",
         "./skills/evn-clickup",
-        "./skills/evn-kubernetes"
+        "./skills/evn-kubernetes",
+        "./skills/evn-statusline"
       ],
       "source": "./",
       "strict": false

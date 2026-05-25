@@ -3,6 +3,9 @@
 .claude/
 *.log
 
+# Serena
+.serena/
+
 # Project-specific instructions (user-specific)
 CLAUDE.md
 

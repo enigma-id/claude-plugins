@@ -1,23 +1,24 @@
 ---
 name: evn-engine
-description: Engine framework usage patterns for EVN microservices - lifecycle management, database integration, message brokers, and transport protocols
-triggers:
-  - engine
-  - lifecycle
-  - onstart
-  - onstop
-  - rabbitmq
-  - bun orm
-  - rest server
-  - grpc
-  - validation
-  - session
-  - jwt
+description: Engine framework (logistics-id/engine) usage patterns and integration guide. Use this skill when working with the Engine framework for lifecycle management (OnStart, OnStop, Run), database integration (PostgreSQL, MongoDB, Redis), message brokers (RabbitMQ, NATS), or transport protocols (REST, gRPC). Apply when initializing Engine in main.go, configuring database connections, setting up message consumers, or implementing transport handlers.
 ---
 
 # EVN Engine Framework
 
 Usage patterns for the `logistics-id/engine` framework — lifecycle management, database integration, message brokers, and transport protocols for EVN microservices.
+
+## Table of Contents
+
+- [Framework Overview](#framework-overview)
+- [Core Concepts](#core-concepts)
+- [Basic Application Structure](#basic-application-structure)
+- [Database Integration](#database-integration)
+- [Message Brokers](#message-brokers)
+- [Transport Protocols](#transport-protocols)
+- [Common Utilities](#common-utilities)
+- [Configuration Patterns](#configuration-patterns)
+- [Best Practices](#best-practices)
+- [Complete Example](#complete-example)
 
 ## Framework Overview
 

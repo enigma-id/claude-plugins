@@ -1,6 +1,6 @@
 ---
 name: evn-kubernetes
-description: Use when working with Kubernetes clusters, deploying services, debugging pods, managing namespaces, checking cluster health, or any kubectl operations. Use when user mentions k8s, kubernetes, cluster, pods, deployments, services, ingress, or namespace operations.
+description: Kubernetes cluster operations and debugging for EVN ID infrastructure. Use this skill for any Kubernetes operations including namespace inventory, deployment management, pod debugging, service inspection, log retrieval, and resource monitoring. Apply when working with the kubernetes-admin@kubernetes cluster, troubleshooting deployments, checking pod status, or managing resources across namespaces (envio, onward, sukabread, tokocare, wordpress, playground, dev-warehouse).
 ---
 
 # Kubernetes Cluster Operations
@@ -26,8 +26,6 @@ See `k8s_cluster_facts.md` in this skill directory for durable cluster facts and
 - **No metrics-server / No HPA**
 - **No dynamic storage provisioner; PVs are manually managed**
 - Kong previously had a crashlooping pod (admin listen mismatch), rolled back to revision 1
-
-## Quick Reference
 
 ## Namespace Inventory
 

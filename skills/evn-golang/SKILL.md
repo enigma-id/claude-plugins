@@ -1,20 +1,30 @@
 ---
 name: evn-golang
-description: Go backend standards for EVN services - clean architecture, project structure, coding conventions, and scaffold tools
-triggers:
-  - golang
-  - go backend
-  - clean architecture
-  - repository pattern
-  - usecase
-  - handler
-  - scaffold
-  - project structure
+description: Go backend development standards and scaffold tools for EVN ID services. Use this skill for any Go backend work including project initialization, entity generation, repository patterns, usecase implementation, REST/gRPC handlers, event publishers/subscribers, and dependency injection. Apply when scaffolding new services, adding features to existing Go services, or implementing clean architecture patterns. This skill covers the complete workflow from SQL DDL to production-ready handlers.
 ---
 
 # EVN Go Backend Standards
 
 Go backend coding standards, clean architecture patterns, and project structure for EVN microservices.
+
+## Table of Contents
+
+- [Core Principles](#core-principles)
+- [Project Structure](#project-structure)
+- [Naming Conventions](#naming-conventions)
+- [Two Naming Domains](#two-naming-domains)
+- [Clean Architecture Layers](#clean-architecture-layers)
+- [Scaffold Tools](#scaffold-tools)
+- [Workflows](#workflows)
+- [Code Patterns](#code-patterns)
+- [Validation](#validation)
+- [Error Handling](#error-handling)
+- [Event Publishing](#event-publishing)
+- [Testing](#testing)
+- [Best Practices](#best-practices)
+- [gRPC & Proto](#grpc--proto)
+- [Event-Driven Architecture](#event-driven-architecture)
+- [Checklist for New Features](#checklist-for-new-features)
 
 ## Core Principles
 
@@ -184,7 +194,9 @@ Scripts are in `skills/evn-golang/scripts/`:
 - `scaffold-publisher.sh` — Event publisher
 - `scaffold-subscriber.sh` — Event subscriber
 
-### Workflow
+See [Workflows](#workflows) section for automated task sequences using these tools.
+
+### Usage
 
 **Step 0 — Determine project type**
 

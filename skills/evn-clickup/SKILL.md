@@ -1,6 +1,6 @@
 ---
 name: evn-clickup
-description: Use when managing ClickUp tasks, documents, and project tracking via the official ClickUp MCP server. Covers Pre-Deal Pipeline, project task management, document read/create/update.
+description: ClickUp workspace operations and task management for EVN ID team. Use this skill for any ClickUp operations including creating/updating/filtering tasks, managing documents, team collaboration, time tracking, and workspace navigation. Apply when the user mentions tickets, tasks, sprints, ClickUp, or needs to track work items. This skill provides direct access to workspace 90181213274 and handles all task lifecycle operations.
 ---
 
 # ClickUp Skill

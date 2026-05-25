@@ -1,21 +1,28 @@
 ---
 name: evn-database
-description: PostgreSQL database schema design, naming conventions, and migration patterns for EVN backend services
-triggers:
-  - database
-  - schema
-  - migration
-  - postgres
-  - postgresql
-  - table
-  - column
-  - index
-  - foreign key
+description: PostgreSQL schema design standards for EVN ID services. Use this skill whenever working with database schemas, table definitions, migrations, foreign keys, indexes, or any PostgreSQL DDL. Apply these standards when creating new tables, modifying existing schemas, or reviewing database design. This includes soft delete patterns, naming conventions, and migration workflows with Bun.
 ---
 
 # EVN Database Standards
 
 PostgreSQL database schema design standards, naming conventions, and migration patterns for EVN backend services.
+
+## Table of Contents
+
+- [Core Principles](#core-principles)
+- [Naming Conventions](#naming-conventions)
+- [Standard Table Structure](#standard-table-structure)
+- [Data Types](#data-types)
+- [Soft Delete Pattern](#soft-delete-pattern)
+- [Relationships](#relationships)
+- [Migrations (Bun Migrate)](#migrations-bun-migrate)
+- [Indexing Strategy](#indexing-strategy)
+- [Common Patterns](#common-patterns)
+- [Schema Documentation](#schema-documentation)
+- [Performance Considerations](#performance-considerations)
+- [Security](#security)
+- [Checklist for New Tables](#checklist-for-new-tables)
+- [Example: Complete Table Definition](#example-complete-table-definition)
 
 ## Core Principles
 

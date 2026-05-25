@@ -1,20 +1,28 @@
 ---
 name: evn-react
-description: React/TypeScript standards for EVN frontend applications - component structure, state management, hooks, and styling patterns
-triggers:
-  - react
-  - typescript
-  - frontend
-  - component
-  - hooks
-  - state management
-  - tsx
-  - jsx
+description: React/TypeScript frontend development standards for EVN ID services. Use this skill for any React/TypeScript frontend work including component structure, state management, form handling, API integration, and styling. Apply when building new components, implementing hooks, managing state with Context/Zustand/React Query, handling forms with React Hook Form + Zod, or setting up TypeScript types. This skill enforces type safety and modern React patterns.
 ---
 
 # EVN React/TypeScript Standards
 
 React and TypeScript coding standards for EVN frontend applications.
+
+## Table of Contents
+
+- [Core Principles](#core-principles)
+- [Project Structure](#project-structure)
+- [Naming Conventions](#naming-conventions)
+- [TypeScript Patterns](#typescript-patterns)
+- [Component Patterns](#component-patterns)
+- [Hooks Patterns](#hooks-patterns)
+- [State Management](#state-management)
+- [API Integration](#api-integration)
+- [Form Handling](#form-handling)
+- [Styling](#styling)
+- [Performance Optimization](#performance-optimization)
+- [Testing](#testing)
+- [Best Practices](#best-practices)
+- [Checklist for New Components](#checklist-for-new-components)
 
 ## Core Principles
 

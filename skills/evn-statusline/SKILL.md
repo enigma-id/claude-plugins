@@ -1,18 +1,15 @@
 ---
 name: evn-statusline
-description: Configure EVN-specific statusline for Claude Code with ClickUp task tracking and git branch info
-triggers:
-  - statusline
-  - setup statusline
-  - configure statusline
+description: Configure EVN-specific statusline for Claude Code with git branch info, model display, active skills tracking, and context usage monitoring. Use this skill when setting up Claude Code statusline configuration, troubleshooting statusline display issues, or customizing the statusline script. This is a one-time setup skill that installs and configures the statusline command script.
 ---
 
 # EVN Statusline Setup
 
 Configures Claude Code statusline to display:
-- Current ClickUp task (from branch name pattern)
 - Git branch and status
-- Project context
+- Model name
+- Active skills
+- Context usage percentage
 
 ## Setup
 

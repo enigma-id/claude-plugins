@@ -1292,6 +1292,38 @@ $SCRIPTS/scaffold-subscriber.sh order Order
 
 Automated task sequences for common development patterns. These workflows execute intelligently based on context and handle errors gracefully.
 
+### Initialize New Service
+
+**Trigger:** User asks to "initialize new service" or "create new Go service"
+
+**Steps:**
+1. Confirm service module path (e.g., `github.com/enigma-id/svc-myapi`)
+2. Run `scaffold-init.sh <module_path>`
+   - Generates project skeleton with engine lifecycle
+   - Creates `main.go` with OnStart/OnStop/Run
+   - Creates `src/handler.go` for route registration
+   - Creates `src/subscriber.go` for event registration
+   - Creates `src/permission.go` for permission sync
+   - Creates `entity/` module with separate `go.mod`
+   - Initializes main `go.mod`
+3. Run `go mod tidy` in root and entity directories
+4. Verify: `go build ./...`
+5. Report: Project initialized, next steps (add entities, configure database)
+
+**Error Recovery:**
+- If directory not empty → ask to overwrite or choose different path
+- If module path invalid → suggest correct format
+- If build fails → diagnose missing dependencies, retry
+
+**Example:**
+```
+User: "Initialize new service for warehouse management"
+
+→ Asks for module path: github.com/enigma-id/svc-warehouse
+→ Runs scaffold-init.sh
+→ Reports: "Service initialized. Next: add database config in main.go, create first entity"
+```
+
 ### Full Entity Scaffold (from SQL DDL)
 
 **Trigger:** User provides SQL DDL or asks to "create entity from table"

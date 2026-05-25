@@ -1,0 +1,54 @@
+{
+  "name": "evn-id-skills",
+  "owner": {
+    "email": "alifamri@evn.co.id",
+    "name": "Alif Amri"
+  },
+  "metadata": {
+    "description": "EVN ID engineering team skills – database standards, Go backend, engine framework, React frontend, ClickUp management, and Kubernetes operations"
+  },
+  "plugins": [
+    {
+      "name": "evn-database",
+      "description": "PostgreSQL database schema design, naming conventions, and migration patterns",
+      "skills": ["./skills/evn-database"],
+      "source": "./",
+      "strict": false
+    },
+    {
+      "name": "evn-golang",
+      "description": "Go backend standards – clean architecture, project structure, coding conventions, and scaffold tools",
+      "skills": ["./skills/evn-golang"],
+      "source": "./",
+      "strict": false
+    },
+    {
+      "name": "evn-engine",
+      "description": "Engine framework usage – lifecycle management, database integration, message brokers, and transport protocols",
+      "skills": ["./skills/evn-engine"],
+      "source": "./",
+      "strict": false
+    },
+    {
+      "name": "evn-react",
+      "description": "React/TypeScript standards – component structure, state management, hooks, and styling patterns",
+      "skills": ["./skills/evn-react"],
+      "source": "./",
+      "strict": false
+    },
+    {
+      "name": "evn-clickup",
+      "description": "ClickUp task management, documents, workspace operations, and team collaboration",
+      "skills": ["./skills/evn-clickup"],
+      "source": "./",
+      "strict": false
+    },
+    {
+      "name": "evn-kubernetes",
+      "description": "Kubernetes cluster operations – namespace inventory, deployments, debugging, and monitoring",
+      "skills": ["./skills/evn-kubernetes"],
+      "source": "./",
+      "strict": false
+    }
+  ]
+}

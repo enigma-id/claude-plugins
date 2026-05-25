@@ -1,0 +1,25 @@
+# OMC state & session files
+.omc/
+.claude/
+*.log
+
+# Project-specific instructions (user-specific)
+CLAUDE.md
+
+# Editor
+.DS_Store
+*.swp
+.idea/
+.vscode/
+
+# Environment & secrets
+.env
+.env.*
+*.pem
+*.key
+
+# Build artifacts
+dist/
+bin/
+tmp/
+example

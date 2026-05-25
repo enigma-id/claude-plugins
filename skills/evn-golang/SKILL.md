@@ -1287,3 +1287,163 @@ $SCRIPTS/scaffold-subscriber.sh order Order
 - [ ] Test event consumption with RabbitMQ
 - [ ] Handle errors with proper Ack/Nack strategy
 - [ ] Test endpoints manually
+
+## Workflows
+
+Automated task sequences for common development patterns. These workflows execute intelligently based on context and handle errors gracefully.
+
+### Full Entity Scaffold (from SQL DDL)
+
+**Trigger:** User provides SQL DDL or asks to "create entity from table"
+
+**Steps:**
+1. Detect table name from SQL DDL
+2. Run `scaffold-entity.sh` with table DDL
+   - Auto-chains to `scaffold-repo.sh`
+   - Auto-wires entity module in main `go.mod`
+3. Run `scaffold-usecase.sh <EntityName>`
+4. Run `scaffold-factory.sh <EntityName>` (updates `src/usecase/factory.go`)
+5. Run `scaffold-handler.sh <EntityName>` (generates REST handlers + requests)
+6. Verify: `go mod tidy && go build ./...`
+7. Report: Files created, next steps (implement business logic, test endpoints)
+
+**Error Recovery:**
+- If table name detection fails → ask user for entity name
+- If build fails → diagnose error, fix imports, retry
+- If entity module already exists → skip auto-wiring step
+
+**Example:**
+```
+User: "Create entity from this table:
+CREATE TABLE warehouses (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  name VARCHAR(255) NOT NULL,
+  address TEXT
+);"
+
+→ Executes full scaffold workflow
+→ Reports: "Created Warehouse entity with REST handlers. Next: implement business logic in src/usecase/warehouse.go"
+```
+
+### Add gRPC Service
+
+**Trigger:** User asks to "add gRPC for <Entity>" or "create gRPC service"
+
+**Steps:**
+1. Check if proto file exists at `proto/<entity>.proto`
+   - If missing → ask user to create proto file first
+2. Run `scaffold-grpc.sh <EntityName>`
+   - Generates `proto/constant.go`
+   - Generates `proto/converter.go` stubs
+   - Generates `src/handler/grpc/<entity>.go` handler skeleton
+   - Updates `src/handler.go` with `RegisterGrpcRoutes`
+3. Run `cd proto && protoc --go_out=. --go-grpc_out=. <entity>.proto`
+4. Verify: proto compiles, handler registered in `main.go`
+5. Report: Files created, next steps (implement converters, add RPC logic)
+
+**Error Recovery:**
+- If proto file missing → guide user to create it first
+- If protoc fails → check proto syntax, suggest fixes
+- If handler already exists → ask to overwrite or skip
+
+**Example:**
+```
+User: "Add gRPC service for Order"
+
+→ Checks proto/order.proto exists
+→ Runs scaffold-grpc.sh Order
+→ Compiles proto
+→ Reports: "gRPC handler created. Implement converter.go methods and RPC logic in src/handler/grpc/order.go"
+```
+
+### Add Event Publisher
+
+**Trigger:** User asks to "publish events for <Entity>" or "add event publisher"
+
+**Steps:**
+1. Run `scaffold-publisher.sh <EntityName>`
+   - Generates `src/event/publisher/<entity>.go`
+   - Creates event struct with entity + PublishedAt
+   - Generates Created/Updated/Deleted functions
+2. Identify usecase methods that should publish events
+3. Add publisher calls after successful state changes
+4. Verify: imports correct, events compile
+5. Report: Publisher created, events wired into usecase
+
+**Error Recovery:**
+- If publisher already exists → ask to overwrite or add custom events
+- If usecase not found → guide user to create usecase first
+
+**Example:**
+```
+User: "Add event publishing for Order"
+
+→ Runs scaffold-publisher.sh Order
+→ Adds publisher.OrderCreated() calls in usecase.Create()
+→ Reports: "Event publisher created. Events: order.created, order.updated, order.deleted"
+```
+
+### Add Event Subscriber
+
+**Trigger:** User asks to "subscribe to <service> events" or "consume events from <service>"
+
+**Steps:**
+1. Confirm event source service and entity name
+2. Run `scaffold-subscriber.sh <event_source> <EntityName>`
+   - Generates `src/event/subscriber/<event_source>.go`
+   - Creates message struct wrapping external entity
+   - Generates handler functions (Created/Updated/Deleted)
+   - Auto-registers in `src/subscriber.go`
+3. Verify: external entity import path is correct
+4. Guide user to implement usecase methods for event handling
+5. Report: Subscriber created, next steps (implement business logic)
+
+**Error Recovery:**
+- If external entity import fails → ask user for correct module path
+- If subscriber already exists → ask to add custom handlers or skip
+
+**Example:**
+```
+User: "Subscribe to order events from svc-order"
+
+→ Runs scaffold-subscriber.sh order Order
+→ Generates subscriber/order.go with SubscribeOrderCreated/Updated/Deleted
+→ Reports: "Subscriber created. Implement usecase methods to handle order events"
+```
+
+### Quick REST Endpoint
+
+**Trigger:** User asks to "add endpoint for <action>" without full entity scaffold
+
+**Steps:**
+1. Detect module name from context or ask user
+2. Check if usecase exists
+   - If missing → run usecase scaffold first
+3. Generate single handler file in `src/handler/<module>/<action>.go`
+4. Add route registration in `src/handler.go`
+5. Verify: handler compiles, route registered
+6. Report: Endpoint created, implement logic in handler
+
+**Error Recovery:**
+- If module unclear → ask user for module name
+- If usecase missing → offer to scaffold full module or just handler
+
+**Example:**
+```
+User: "Add endpoint to publish delivery plan"
+
+→ Detects DeliveryPlan module
+→ Generates src/handler/delivery_plan/publish.go
+→ Adds route in handler.go
+→ Reports: "POST /delivery-plan/publish endpoint created"
+```
+
+### Workflow Execution Principles
+
+1. **Context-Aware** — Read codebase state before executing (check if files exist, detect patterns)
+2. **Error Recovery** — If a step fails, diagnose and retry with fixes (don't blindly re-run)
+3. **User Confirmation** — For destructive operations (overwrite existing files), ask first
+4. **Incremental Progress** — Report after each major step, don't wait until end
+5. **Adaptive** — Skip unnecessary steps (e.g., if entity already exists, skip scaffold-entity)
+6. **Validation** — Always verify with `go build` before reporting success
+7. **Next Steps** — Always tell user what to do next (implement logic, test, etc.)

@@ -5,28 +5,34 @@ Skill marketplace for the EVN engineering team. Extends Claude Code with special
 ## Install
 
 ```bash
+# Add marketplace from GitHub
+claude plugin marketplace add https://github.com/enigma-id/claude-plugins
+
+# Install EVN skills (includes all 6 skills)
+claude plugin install skills@evn.co.id
+```
+
+**Local development:**
+```bash
 # Add local marketplace
 claude plugin marketplace add /Users/alifamri/Works/Enigma/claude-plugins
 
-# Install all skills
-claude plugin install evn-database@evn.co.id
-claude plugin install evn-golang@evn.co.id
-claude plugin install evn-engine@evn.co.id
-claude plugin install evn-react@evn.co.id
-claude plugin install evn-clickup@evn.co.id
-claude plugin install evn-kubernetes@evn.co.id
+# Install from local
+claude plugin install skills@evn-id-skills
 ```
 
 ## Skills
 
-| Skill | Description | Key Features |
-|---|---|---|
-| `evn-database` | PostgreSQL schema design standards | Table naming, soft delete, migrations, indexing |
-| `evn-golang` | Go backend clean architecture | Scaffold tools, project structure, REST/gRPC handlers, event-driven |
-| `evn-engine` | Engine framework (`logistics-id/engine`) | Lifecycle, database, RabbitMQ, REST/gRPC transport |
-| `evn-react` | React/TypeScript frontend standards | Component patterns, state management, hooks, forms |
-| `evn-clickup` | ClickUp workspace operations | Task management, documents, team collaboration |
-| `evn-kubernetes` | K8s cluster operations | Namespace inventory, deployments, debugging |
+All skills are available under the `skills` plugin:
+
+| Skill | Command | Description | Key Features |
+|---|---|---|---|
+| `evn-database` | `/evn-database` | PostgreSQL schema design standards | Table naming, soft delete, migrations, indexing |
+| `evn-golang` | `/evn-golang` | Go backend clean architecture | Scaffold tools, project structure, REST/gRPC handlers, event-driven |
+| `evn-engine` | `/evn-engine` | Engine framework (`logistics-id/engine`) | Lifecycle, database, RabbitMQ, REST/gRPC transport |
+| `evn-react` | `/evn-react` | React/TypeScript frontend standards | Component patterns, state management, hooks, forms |
+| `evn-clickup` | `/evn-clickup` | ClickUp workspace operations | Task management, documents, team collaboration |
+| `evn-kubernetes` | `/evn-kubernetes` | K8s cluster operations | Namespace inventory, deployments, debugging |
 
 ## Scaffold Tools (evn-golang)
 
@@ -136,10 +142,13 @@ claude plugin validate ./
 
 ```bash
 # Update marketplace
-claude plugin marketplace update evn-id-skills
+claude plugin marketplace update evn.co.id
 
-# Reinstall skill
-claude plugin install evn-golang@evn-id-skills --force
+# Reinstall plugin
+claude plugin install skills@evn.co.id --force
+
+# Reload plugins in active session
+/reload-plugins
 ```
 
 ## Workspace Context

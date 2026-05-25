@@ -9,12 +9,12 @@ Skill marketplace for the EVN engineering team. Extends Claude Code with special
 claude plugin marketplace add /Users/alifamri/Works/Enigma/claude-plugins
 
 # Install all skills
-claude plugin install evn-database@evn-id-skills
-claude plugin install evn-golang@evn-id-skills
-claude plugin install evn-engine@evn-id-skills
-claude plugin install evn-react@evn-id-skills
-claude plugin install evn-clickup@evn-id-skills
-claude plugin install evn-kubernetes@evn-id-skills
+claude plugin install evn-database@evn.co.id
+claude plugin install evn-golang@evn.co.id
+claude plugin install evn-engine@evn.co.id
+claude plugin install evn-react@evn.co.id
+claude plugin install evn-clickup@evn.co.id
+claude plugin install evn-kubernetes@evn.co.id
 ```
 
 ## Skills
